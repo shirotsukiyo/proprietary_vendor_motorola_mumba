@@ -3323,6 +3323,8 @@ PRODUCT_COPY_FILES += \
     vendor/motorola/mumba/proprietary/vendor/etc/init/fingerprint-fpc.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/fingerprint-fpc.rc \
     vendor/motorola/mumba/proprietary/vendor/etc/init/hw/init.mmi.services.override.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mmi.services.override.rc \
     vendor/motorola/mumba/proprietary/vendor/etc/init/motorola.hardware.fdr.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/motorola.hardware.fdr.service.rc \
+    vendor/motorola/mumba/proprietary/vendor/etc/init/motorola.hardware.health.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/motorola.hardware.health.service.rc \
+    vendor/motorola/mumba/proprietary/vendor/etc/init/motorola.hardware.health.storage.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/motorola.hardware.health.storage.service.rc \
     vendor/motorola/mumba/proprietary/vendor/etc/init/motorola.hardware.rpmb.service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/motorola.hardware.rpmb.service.rc \
     vendor/motorola/mumba/proprietary/vendor/etc/init/motosxf.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/motosxf.rc \
     vendor/motorola/mumba/proprietary/vendor/etc/init/nfc-service-st.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/nfc-service-st.rc \
@@ -3364,7 +3366,9 @@ PRODUCT_COPY_FILES += \
     vendor/motorola/mumba/proprietary/vendor/etc/libnfc-hal-st.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st.conf \
     vendor/motorola/mumba/proprietary/vendor/etc/libnfc-nci-st-felica.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci-st-felica.conf \
     vendor/motorola/mumba/proprietary/vendor/etc/libnfc-nci-st.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci-st.conf \
+    vendor/motorola/mumba/proprietary/vendor/etc/libse-gto-hal.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libse-gto-hal.conf \
     vendor/motorola/mumba/proprietary/vendor/etc/motosxf_conf_profile:$(TARGET_COPY_OUT_VENDOR)/etc/motosxf_conf_profile \
+    vendor/motorola/mumba/proprietary/vendor/etc/permissions/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     vendor/motorola/mumba/proprietary/vendor/etc/permissions/unavail.android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/unavail.android.hardware.sensor.hifi_sensors.xml \
     vendor/motorola/mumba/proprietary/vendor/etc/sensors/config/hx322x.json:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/config/hx322x.json \
     vendor/motorola/mumba/proprietary/vendor/etc/sensors/config/icm4x6xa_0.json:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/config/icm4x6xa_0.json \
@@ -3491,6 +3495,7 @@ PRODUCT_COPY_FILES += \
     vendor/motorola/mumba/proprietary/vendor/usr/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl
 
 PRODUCT_PACKAGES += \
+    android.hardware.secure_element.thales.libse \
     camera.device@1.0-impl \
     com.mot.eeprom.mot_gt24p128g_imx882_eeprom \
     com.mot.eeprom.mot_mumbai_gc08a8_otp \
@@ -3658,6 +3663,7 @@ PRODUCT_PACKAGES += \
     libcamxtintlessalgo \
     libchilog \
     libcom.qti.chinodeutils \
+    libextra-thales \
     libhdr10plus \
     libhdr_impl \
     libhme \
@@ -3678,8 +3684,11 @@ PRODUCT_PACKAGES += \
     libmot_afd \
     libmot_engine_settings \
     libmotcameramodulemonitor \
+    libmotohid \
     libmotoisdataqueue \
     libmpbase \
+    libnativecospatchkernel-thales \
+    libnativecosupdateapi-thales \
     libopencv \
     libopencv3a \
     libopestriping \
@@ -3689,6 +3698,8 @@ PRODUCT_PACKAGES += \
     libqllengine \
     libqshcamera \
     libsfeShiftExtrapolation \
+    libspukeymintdeviceutils \
+    libspukeymintutils \
     libstnfc-auth \
     libstnfc-streset \
     libswregistrationalgo \
@@ -3700,12 +3711,16 @@ PRODUCT_PACKAGES += \
     motorola.hardware.camera.desktop@1.0 \
     motorola.hardware.camera.desktop@2.0 \
     motorola.hardware.fdr-V1-ndk \
+    motorola.hardware.health.aidl-V1-ndk \
+    motorola.hardware.health.storage.aidl-V1-ndk \
+    motorola.hardware.health.storage@1.0 \
     motorola.hardware.rpmb-V1-ndk \
     motorola.hardware.sxf-V2-ndk \
     nfc_nci.st21nfc.st \
     vendor.qti.hardware.camera.postproc@1.0-service-impl \
     vendor.qti.hardware.data.latency@1.0 \
     vendor.qti.hardware.fingerprint@1.0 \
+    vendor.qti.hardware.qdutils_disp@1.0 \
     vendor.qti.latency@2.0 \
     vendor.qti.latency@2.1 \
     vendor.qti.latency@2.2 \
@@ -3719,15 +3734,21 @@ PRODUCT_PACKAGES += \
     manifest_IMoto_AIDL_Fingerprint.xml \
     manifest_IMoto_AIDL_Rpmb.xml \
     motorola.hardware.fdr.service.xml \
+    motorola.hardware.health.service.xml \
+    motorola.hardware.health.storage.service.xml \
     vendor.motorola.hardware.sxf.service.xml \
     vendor.qti.camera.provider.xml \
     capsense_reset \
     fpc_tee_test \
     android.hardware.biometrics.fingerprint-service-jv \
     android.hardware.biometrics.fingerprint-service.fpc \
+    android.hardware.secure_element-service.thales \
+    android.hardware.weaver-service-spu-qti \
     com.motorola.hardware.ifaa-V1-service \
     fpc_ident \
     motorola.hardware.fdr-service \
+    motorola.hardware.health-service \
+    motorola.hardware.health.storage-service \
     motorola.hardware.rpmb-service \
     motosxf \
     vendor.qti.camera.provider-service_64 \
