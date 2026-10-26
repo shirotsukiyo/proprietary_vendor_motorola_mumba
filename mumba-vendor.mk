@@ -3704,7 +3704,12 @@ PRODUCT_PACKAGES += \
     motorola.hardware.sxf-V2-ndk \
     nfc_nci.st21nfc.st \
     vendor.qti.hardware.camera.postproc@1.0-service-impl \
+    vendor.qti.hardware.data.latency@1.0 \
     vendor.qti.hardware.fingerprint@1.0 \
+    vendor.qti.latency@2.0 \
+    vendor.qti.latency@2.1 \
+    vendor.qti.latency@2.2 \
+    vendor.qti.latencyaidlservice-V1-ndk \
     vendor.qti.hardware.seccam@1.0 \
     HotwordEnrollmentXGoogleHEXAGON_WIDEBAND \
     HotwordEnrollmentYGoogleHEXAGON_WIDEBAND \
